@@ -1,0 +1,399 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "LoopBack Application",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/people/count": {
+      "get": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "count",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Person model count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "PersonController.count"
+      }
+    },
+    "/people/{id}": {
+      "put": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "replaceById",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Person PUT success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PersonController.replaceById"
+      },
+      "patch": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "updateById",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Person PATCH success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              }
+            }
+          },
+          "x-parameter-index": 1
+        },
+        "operationId": "PersonController.updateById"
+      },
+      "get": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "findById",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Person model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PersonController.findById"
+      },
+      "delete": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "deleteById",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "204": {
+            "description": "Person DELETE success"
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "schema": {
+              "type": "number"
+            },
+            "required": true
+          }
+        ],
+        "operationId": "PersonController.deleteById"
+      }
+    },
+    "/people": {
+      "post": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "create",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Person model instance",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Person"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              }
+            }
+          }
+        },
+        "operationId": "PersonController.create"
+      },
+      "patch": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "updateAll",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Person PATCH success count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "count": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "type": "object"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Person"
+              }
+            }
+          }
+        },
+        "operationId": "PersonController.updateAll"
+      },
+      "get": {
+        "x-controller-name": "PersonController",
+        "x-operation-name": "find",
+        "tags": [
+          "PersonController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Array of Person model instances",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Person"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "filter",
+            "in": "query",
+            "style": "deepObject",
+            "explode": true,
+            "schema": {
+              "properties": {
+                "where": {
+                  "type": "object"
+                },
+                "fields": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "boolean"
+                    },
+                    "name": {
+                      "type": "boolean"
+                    },
+                    "generation": {
+                      "type": "boolean"
+                    },
+                    "motherId": {
+                      "type": "boolean"
+                    },
+                    "fatherId": {
+                      "type": "boolean"
+                    }
+                  }
+                },
+                "offset": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "skip": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                }
+              },
+              "type": "object"
+            }
+          }
+        ],
+        "operationId": "PersonController.find"
+      }
+    },
+    "/ping": {
+      "get": {
+        "x-controller-name": "PingController",
+        "x-operation-name": "ping",
+        "tags": [
+          "PingController"
+        ],
+        "responses": {
+          "200": {
+            "description": "Ping Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "greeting": {
+                      "type": "string"
+                    },
+                    "date": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "type": "string"
+                    },
+                    "headers": {
+                      "type": "object",
+                      "properties": {
+                        "Content-Type": {
+                          "type": "string"
+                        }
+                      },
+                      "additionalProperties": true
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "PingController.ping"
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "http://[::1]:3001"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "Person": {
+        "title": "Person",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "generation": {
+            "type": "string"
+          },
+          "motherId": {
+            "type": "number"
+          },
+          "fatherId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "generation",
+          "motherId",
+          "fatherId"
+        ]
+      }
+    }
+  }
+}
